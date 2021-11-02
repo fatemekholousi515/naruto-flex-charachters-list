@@ -1,0 +1,31 @@
+import React, { useState, useEffect } from "react";
+
+function App() {
+  const [data, setData] = useState([]);
+
+  useEffect(() => {
+    async function fetchData() {
+      const response = await fetch(
+        "https://60b4f1a0fe923b0017c8335b.mockapi.io/contacts"
+      );
+      const whatIGot = await response.json();
+      setData(whatIGot);
+      console.log(whatIGot);
+    }
+
+    fetchData();
+    return () => {
+      console.log("I can't stop me");
+    };
+  }, []);
+
+  return (
+    <div>
+      {data.map((item) => (
+        <h1>{item.firstName}</h1>
+      ))}
+    </div>
+  );
+}
+
+export default App;

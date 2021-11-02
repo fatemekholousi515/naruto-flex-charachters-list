@@ -1,23 +1,36 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React from "react";
+import { naruto } from "naruto-name-generator";
+import header from "./header.jpg";
 function App() {
+  const charachters = naruto.all;
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <div
+        style={{
+          display: "flex",
+          flexWrap: "wrap",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <img src={header} />
+        {charachters.map((charachter) => (
+          <p
+            style={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              backgroundColor: "white",
+              // color: "white",
+              width: "150px",
+              height: "50px",
+              margin: "5px",
+            }}
+          >
+            {charachter.name}
+          </p>
+        ))}
+      </div>
     </div>
   );
 }
